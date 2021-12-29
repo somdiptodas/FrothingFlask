@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="columns is-4 is-offset-4">
+    <div class="column is-half">
+        nothing
+    </div>
+    <div class="column is-one-quarter" >
+        <h3 class="title">Add a product</h3>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+        <form enctype="multipart/form-data" method="POST" action="/addProduct">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="productType" name="productType" placeholder="productType" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="productName" name="productName" placeholder="productName" autofocus="">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="productPrice" name="productPrice" placeholder="productPrice">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="productQuantity" name="productQuantity" placeholder="productQuantity">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    Upload Product Image
+                    <input id="fileupload" name="myFile" type="file" >
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth">Add Product</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
