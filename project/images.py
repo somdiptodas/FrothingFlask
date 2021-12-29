@@ -7,8 +7,9 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 base_image_directory = os.path.join(APP_ROOT, 'images\\base')
 product_image_directory = os.path.join(APP_ROOT, 'images\\products')
 
-def saveProductImage(productId, imageFile, filename):
+def saveProductImage(productId, imageFile):
     # Always a good idea to secure a filename before storing it
+    filename = imageFile.filename
     filename = secure_filename(filename)
     # This is to verify files are supported
     ext = os.path.splitext(filename)[1][1:].strip().lower()
@@ -18,7 +19,7 @@ def saveProductImage(productId, imageFile, filename):
         imageFile.save(destination)
         # Save a copy of the thumbnail image
         image = Image.open(destination)
-        image.thumbnail((300, 300))
+        image.thumbnail((100, 100))
         destination = os.path.join(product_image_directory, 'Thumbnail_Image_'+str(productId)+'.png')
         image.save(destination)
         return True
