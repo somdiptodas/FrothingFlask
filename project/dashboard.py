@@ -27,6 +27,17 @@ def image(file):
     filename = os.path.join(product_image_directory, file)
     return send_file(filename, mimetype='image/png')
 
+@dashboard.route("/deleteProduct/<id>", methods=['POST'])
+def deleteProduct(id):
+    file = str(id)+".png"
+    Thumbnail_FileName = os.path.join(product_image_directory, 'Thumbnail_Image_'+file)
+    Product_FileName = os.path.join(product_image_directory, 'Product_Image_'+file)
+    os.remove(Thumbnail_FileName)
+    os.remove(Product_FileName)
+    Product.query.filter_by(id=id).delete()
+    db.session.commit()
+    return redirect(url_for('dashboard.main'))
+
 @dashboard.route('/addProduct', methods=['POST'])
 def addProduct():
     productType = request.form.get('productType')

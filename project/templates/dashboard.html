@@ -2,23 +2,37 @@
 
 {% block content %}
 <div class="columns is-4 is-offset-4">
-    <div class="column is-one-quarter">
+    <div class="column list is-one-quarter">
         <div class="box has-background-grey has-text-white is-size-4">
             Product List
         </div>
         {% for x in productList %}
-            <div class='box'> 
-                <div class="columns">
-                    <div class="column is-half">
-                        {{x.productName}}
-                        <br> Price: {{x.productPrice}}
+            <div class="columns is-gapless box">
+                <div class="column is-one-quarter">
+                    <img src="/product/Thumbnail_Image_{{x.id}}.png" alt="Product Image">                 
+                </div>
+            
+                <div class="column is-half">
+                    <div class="is-size-5" style="color:hsl(0, 0%, 0%); ">{{x.productName}}</div>
+                    <div class="">
+                        Price: {{x.productPrice}}
                         <br> Quantity: {{x.productQuantity}}
                     </div>
-                    <div class="column">
-                        <img src="/product/Thumbnail_Image_{{x.id}}.png" alt="Product {{x.productName}} Logo">
-                    </div>
                 </div>
-            </div>
+            
+                <div class="column is-one-quarter">
+                  <div class="buttons is-right">
+                    <button class="button">
+                        Edit
+                    </button>
+                    <form method="POST" action="/deleteProduct/{{x.id}}">
+                        <button class="button has-text-white-ter" style="background-color:hsla(0, 76%, 45%, 0.932);" s>
+                            Delete
+                        </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
         {% endfor %}
     </div>
     <div class="column is-half" >
