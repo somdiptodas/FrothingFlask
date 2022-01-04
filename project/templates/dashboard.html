@@ -51,7 +51,9 @@
             <form enctype="multipart/form-data" method="POST" action="/addProduct">
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="productType" name="productType" placeholder="productType" autofocus="">
+                        Product Type:<br>
+                        <input type="radio" name="productType" value = Merch autofocus="">Merch
+                        <input type="radio" name="productType" value = Vintage autofocus="">Vintage
                     </div>
                 </div>
 
@@ -63,13 +65,13 @@
 
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="productPrice" name="productPrice" placeholder="productPrice">
+                        <input class="input is-large" type="number" step="0.01" name="productPrice" placeholder="productPrice">
                     </div>
                 </div>
 
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="productQuantity" name="productQuantity" placeholder="productQuantity">
+                        <input class="input is-large" type="number" name="productQuantity" placeholder="productQuantity">
                     </div>
                 </div>
 
