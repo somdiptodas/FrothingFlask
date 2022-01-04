@@ -19,7 +19,7 @@ def saveProductImage(productId, imageFile):
         imageFile.save(destination)
         # Save a copy of the thumbnail image
         image = Image.open(destination)
-        image.thumbnail((100, 100))
+        image.thumbnail((150, 150))
         destination = os.path.join(product_image_directory, 'Thumbnail_Image_'+str(productId)+'.png')
         image.save(destination)
         return True

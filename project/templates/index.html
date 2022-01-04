@@ -8,38 +8,34 @@
     A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
   </h2>
 </section>
+
 <section class="section">
   <h1 class="title"> Top Vintage Selections</h1>
   <div class="table-container is-fullwidth" style="height: fit-content; margin: auto; width: 1200px; overflow-x:scroll;">
-    <table class="table is-fluid" style="width: 3000px;">
+    <table class="table is-fluid" style="width:{{vintageSize}}px">
       <tbody>
         <tr>
-          <td>
-            <p>hi</p>
-            <img src="/image/HomePageLogo.png" alt="Frothing Logo">
-          </td>
-          <td>
-            <p>hi</p>
-            <img src="/image/HomePageLogo.png" alt="Frothing Logo">
-          </td>
-          <td>
-            <p>hi</p>
-            <img src="/image/HomePageLogo.png" alt="Frothing Logo">
-          </td>
-          <td>
-            <p>hi</p>
-            <img src="/image/HomePageLogo.png" alt="Frothing Logo">
-          </td>
-          <td>
-            <p>hi</p>
-            <img src="/image/HomePageLogo.png" alt="Frothing Logo">
-          </td>
+          {% for product in vintageProducts  %}
+          <a href=""> 
+            <td>
+              <div class="box" style="width: 200px; height:200px; box-sizing: initial; position: relative;" >
+                <div style="height: 150px;">
+                  <img src=/product/Thumbnail_Image_{{product.id}}.png alt=Vintage{{product.id}} class="center" style="align-content:center"> 
+                <div>
+                <div style="bottom: 10px; width: 200px; position:absolute;">
+                  <p style="text-align: center;">{{product.productName}}</p>
+                  <p style="text-align: center;">{{product.productPrice}}</p>
+                </div>
+              </div>
+            </td>
+          </a> 
+          {% endfor %}
         </tr>
       </tbody>
     </table>
   </div>
-
 </section>
+
 <section class="section">
   <h1 class="title">Frothing Merch</h1>
   <h2 class="subtitle">

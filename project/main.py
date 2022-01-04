@@ -1,5 +1,7 @@
 from flask import Flask, Blueprint, render_template, send_file
 from flask_login import login_required, current_user
+
+from project.models import Product
 from . import db
 import os
 
@@ -8,10 +10,20 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 base_image_directory = os.path.join(APP_ROOT, 'images\\base')
 product_image_directory = os.path.join(APP_ROOT, 'images\\products')
 
+#Methods
+
+
+def getProducts(type: str):
+    products = Product.query.filter_by(productType=type)
+    return products, len([x.id for x in products])
+
+
+#Endpoihts
+
 @main.route('/')
 def index():
-
-    return render_template('index.html')
+    vintage = getProducts("Vintage")
+    return render_template('index.html', vintageProducts = vintage[0], vintageSize = vintage*240)
 
 @main.route("/image/<file>")
 def image(file):
