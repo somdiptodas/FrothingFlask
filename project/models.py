@@ -26,7 +26,8 @@ class UserInfo(db.Model):
     
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    productType = db.Column(db.String(100))
-    productName = db.Column(db.String(100))
-    productPrice = db.Column(db.Float)
-    productQuantity = db.Column(db.Integer)
+    type = db.Column(db.String(100))
+    name = db.Column(db.String(100))
+    price = db.Column(db.Float)
+    quantity = db.Column(db.Integer)
+    priority = db.Column(db.Boolean)

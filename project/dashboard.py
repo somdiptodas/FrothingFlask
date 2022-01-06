@@ -72,7 +72,7 @@ def addProduct():
         flash('Make sure product Quantity is a integer')
         return redirect(url_for('dashboard.main'))
 
-    New_Product = Product(productType=productType, productName=productName, productPrice=productPrice, productQuantity=productQuantity)
+    New_Product = Product(type=productType, name=productName, price=productPrice, quantity=productQuantity, priority=False)
     db.session.add(New_Product)
     db.session.commit()
 

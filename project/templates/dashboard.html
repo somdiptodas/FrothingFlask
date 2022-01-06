@@ -6,17 +6,17 @@
         <div class="box has-background-grey has-text-white is-size-4">
             Product List
         </div>
-        {% for x in productList %}
+        {% for product in productList %}
             <div class="columns is-gapless box">
                 <div class="column is-one-quarter">
-                    <img src="/product/Thumbnail_Image_{{x.id}}.png" alt="Product Image">                 
+                    <img src="/product/Thumbnail_Image_{{product.id}}.png" alt="Product Image">                 
                 </div>
             
                 <div class="column is-half">
-                    <div class="is-size-5" style="color:hsl(0, 0%, 0%); ">{{x.productName}}</div>
+                    <div class="is-size-5" style="color:hsl(0, 0%, 0%); ">{{product.name}}</div>
                     <div class="">
-                        Price: {{x.productPrice}}
-                        <br> Quantity: {{x.productQuantity}}
+                        Price: {{product.price}}
+                        <br> Quantity: {{product.quantity}}
                     </div>
                 </div>
             
@@ -25,7 +25,7 @@
                     <button class="button">
                         Edit
                     </button>
-                    <form method="POST" action="/deleteProduct/{{x.id}}">
+                    <form method="POST" action="/deleteProduct/{{product.id}}">
                         <button class="button has-text-white-ter" style="background-color:hsla(0, 76%, 45%, 0.932);" s>
                             Delete
                         </button>
@@ -59,19 +59,19 @@
 
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="productName" name="productName" placeholder="productName" autofocus="">
+                        <input class="input is-large" type="productName" name="productName" placeholder="Product Name" autofocus="">
                     </div>
                 </div>
 
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="number" step="0.01" name="productPrice" placeholder="productPrice">
+                        <input class="input is-large" type="number" step="0.01" name="productPrice" placeholder="Price">
                     </div>
                 </div>
 
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="number" name="productQuantity" placeholder="productQuantity">
+                        <input class="input is-large" type="number" name="productQuantity" placeholder="Quantity">
                     </div>
                 </div>
 
