@@ -13,8 +13,8 @@ product_image_directory = os.path.join(APP_ROOT, 'images\\products')
 #Methods
 
 
-def getProducts(type: str):
-    products = Product.query.filter_by(productType=type)
+def getPriorityProducts(type: str):
+    products = Product.query.filter_by(type=type, priority=True)
     return products, len([x.id for x in products])
 
 
@@ -22,7 +22,7 @@ def getProducts(type: str):
 
 @main.route('/')
 def index():
-    vintage = getProducts("Vintage")
+    vintage = getPriorityProducts("Vintage")
     return render_template('index.html', vintageProducts = vintage[0], vintageSize = vintage*240)
 
 @main.route("/image/<file>")
