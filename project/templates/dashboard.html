@@ -17,14 +17,15 @@
                     <div class="">
                         Price: {{product.price}}
                         <br> Quantity: {{product.quantity}}
+                        <br> {{product.type}}
                     </div>
                 </div>
             
                 <div class="column is-one-quarter">
                   <div class="buttons is-right">
-                    <button class="button">
+                    <a href="/dashboard/{{product.id}}" class="button">
                         Edit
-                    </button>
+                    </a>
                     <form method="POST" action="/deleteProduct/{{product.id}}">
                         <button class="button has-text-white-ter" style="background-color:hsla(0, 76%, 45%, 0.932);" s>
                             Delete
@@ -36,7 +37,35 @@
         {% endfor %}
     </div>
     <div class="column is-half" >
-        something
+        <div class="box columns">
+            {% if product %}
+                <img src="/product/Thumbnail_Image_{{product.id}}.png" alt="Product Image">
+                <div class="column is-half has-text-left" >
+                    Product Type: <b>{{product.type}}</b>
+                    <br>
+                    Name: <b>{{product.name}}</b>
+                    <br>
+                    Price: ${{product.price}}
+                    <br>
+                    Quantity: {{product.quantity}}
+                    <br>
+                    Promote: {{product.priority}}
+                </div>
+                <div class="column is-half" >
+                    {{product.type}}
+                    <br>
+                    {{product.name}}
+                    <br>
+                    {{product.price}}
+                    <br>
+                    {{product.quantity}}
+                    <br>
+                    {{product.priority}}
+                </div>
+            {% else %}
+                Select a Product to Edit
+            {% endif %}
+        </div>
     </div>
     <div class="column is-one-quarter" >
         <div class="box">

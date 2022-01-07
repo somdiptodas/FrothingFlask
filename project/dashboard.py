@@ -1,6 +1,5 @@
 from flask import Blueprint , render_template, redirect, url_for, request, flash, send_file
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_required, current_user
 from .models import Product
 from . import db
 from .images import saveProductImage
@@ -13,15 +12,24 @@ APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 base_image_directory = os.path.join(APP_ROOT, 'images\\base')
 product_image_directory = os.path.join(APP_ROOT, 'images\\products')
 
+#Methods---------------------------------------------------
 def getProductList():
     productList = db.session.query(Product).all()
     return productList
 
 
-@dashboard.route('/dashboard')
-def main():
-    return render_template('dashboard.html', productList = getProductList())
+#Views-----------------------------------------------------
 
+@dashboard.route('/dashboard')
+@login_required
+def main():
+    return render_template('dashboard.html', productList=getProductList())
+
+@dashboard.route('/dashboard/<id>')
+@login_required
+def edit(id):
+    product = db.session.query(Product).get(id)
+    return render_template('dashboard.html', productList=getProductList(), product=product)
 
 @dashboard.route("/product/Thumbnail_Image_<file>")
 def image(file):
@@ -29,6 +37,9 @@ def image(file):
     filename = os.path.join(product_image_directory, file)
     return send_file(filename, mimetype='image/png')
 
+
+
+#Post Requests---------------------------------------------
 
 @dashboard.route("/deleteProduct/<id>", methods=['POST'])
 def deleteProduct(id):

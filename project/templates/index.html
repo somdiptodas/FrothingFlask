@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<img src="/image/HomePageLogo.png" alt="Frothing Logo">
+<div>
+  <img src="/image/HomePageLogo.png" alt="Frothing Logo">
+</div>
 <section class="section">
   <h1 class="title">Welcome to Frothing Fest!</h1>
   <h2 class="subtitle">
@@ -9,16 +11,16 @@
   </h2>
 </section>
 
-<section class="section">
+<section class="section is-mobile">
   <h1 class="title"> Top Vintage Selections</h1>
   <div class="table-container is-fullwidth" style="height: fit-content; margin: auto; width: 1200px; overflow-x:scroll;">
-    <table class="table is-fluid" style="width:{{vintageSize}}px">
+    <table class="table is-fluid is-mobile" style="width:{{vintageSize}}px">
       <tbody>
         <tr>
           {% for product in vintageProducts  %}
           <a href=""> 
             <td>
-              <div class="box" style="width: 200px; height:200px; box-sizing: initial; position: relative;" >
+              <div class="box" style="width: 10%; height:10%; box-sizing: initial; position: relative;" >
                 <div style="height: 150px;">
                   <img src=/product/Thumbnail_Image_{{product.id}}.png alt=Vintage{{product.id}} class="center" style="align-content:center"> 
                 <div>

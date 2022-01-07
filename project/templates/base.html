@@ -22,10 +22,10 @@
     }
 </style>
 <body>
-    <section class="hero has-background-grey-lighter is-fullheight">
+    <section class="hero has-background-grey-lighter is-mobile is-fullheight">
         <div class="hero-head">
-            <nav class="navbar is-fixed-top has-background-link">
-                <div class="container is-fluid">
+            <nav class="navbar is-fixed-top is-mobile has-background-link">
+                <div class="container is-fluid is-mobile">
                     <div class="navbar-brand">
                         <a href="{{ url_for('main.index') }}" class="navbar-brand">
                             <img src="/image/NavBarLogo.png" alt="Frothing Logo">
@@ -71,9 +71,9 @@
             </nav>
         </div>
 
-        <div class="hero-body">
+        <div class="hero-body is-mobile">
             <img src="/image/VerticalSideLogo.png" alt="Frothing Logo">
-            <div class="container is-fluid has-text-centered box">
+            <div class="container is-fluid has-text-centered box is-mobile">
                {% block content %}
                {% endblock %}
             </div>
